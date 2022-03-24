@@ -2,6 +2,7 @@
 
 namespace Vyuldashev\NovaPermission;
 
+use Auth;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -25,7 +26,9 @@ class RoleBooleanGroup extends BooleanGroup
 
         $roleClass = app(PermissionRegistrar::class)->getRoleClass();
 
-        $options = $roleClass::get()->pluck($labelAttribute ?? 'name', 'name')->toArray();
+        $options = $roleClass::all()->filter(function ($role) {
+            return Auth::user()->can('view', $role);
+        })->pluck($labelAttribute ?? 'name', 'name');
 
         $this->options($options);
     }
