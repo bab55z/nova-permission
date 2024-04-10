@@ -65,12 +65,12 @@ class Role extends Resource
         return Gate::allows('viewAny', app(PermissionRegistrar::class)->getRoleClass());
     }
 
-    public static function label()
+    public static function label(): string
     {
         return __('nova-permission-tool::resources.Roles');
     }
 
-    public static function singularLabel()
+    public static function singularLabel(): string
     {
         return __('nova-permission-tool::resources.Role');
     }
