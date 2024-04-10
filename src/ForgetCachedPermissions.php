@@ -18,7 +18,7 @@ class ForgetCachedPermissions
      *
      * @return mixed
      */
-    public function handle($request, $next)
+    public function handle($request, $next): mixed
     {
         $response = $next($request);
 

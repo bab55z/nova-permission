@@ -21,7 +21,7 @@ class AttachToRole extends Action
      * @param Collection $models
      * @return mixed
      */
-    public function handle(ActionFields $fields, Collection $models)
+    public function handle(ActionFields $fields, Collection $models): mixed
     {
         $role = Role::getModel()->find($fields['role']);
         foreach ($models as $model) {
@@ -34,7 +34,7 @@ class AttachToRole extends Action
      *
      * @return array
      */
-    public function fields()
+    public function fields(): array
     {
         return [
             Select::make('Role')->options(Role::getModel()->get()->pluck('name', 'id')->toArray())->displayUsingLabels(),

@@ -19,7 +19,7 @@ class NovaPermissionTool extends Tool
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         Nova::resources([
             $this->roleResource,
@@ -51,7 +51,7 @@ class NovaPermissionTool extends Tool
         return $this;
     }
 
-    public function permissionPolicy(string $permissionPolicy)
+    public function permissionPolicy(string $permissionPolicy): static
     {
         $this->permissionPolicy = $permissionPolicy;
 
